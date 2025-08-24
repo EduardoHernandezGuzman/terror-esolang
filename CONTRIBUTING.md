@@ -5,7 +5,7 @@ Este proyecto está pensado para aprender, divertirse y rendir homenaje a los bo
 
 ---
 
-## 🚀 Cómo empezar
+## Cómo empezar
 1. Haz un **fork** del repositorio en tu cuenta de GitHub.
 2. Clona tu fork en tu ordenador:
    ```bash
@@ -19,7 +19,7 @@ Este proyecto está pensado para aprender, divertirse y rendir homenaje a los bo
 
 ---
 
-## 🧪 Requisitos
+## Requisitos
 - **Python 3.8+**
 - **pytest** (para correr los tests)
   ```bash
