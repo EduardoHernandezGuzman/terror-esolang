@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-TERROR — Intérprete minimalista inspirado en bolsilibros (v0)
+TERROR — Intérprete minimalista inspirado en bolsilibros (v0.1)
 
 Tokens: SILVER KANE, RALPH BARBY, CRIPTA, TUMBA, FRANK CAUDWELL,
         SUSURRO, CLARK CARRADOS, AMANECER.
@@ -106,13 +106,18 @@ def main(argv: List[str] | None = None) -> int:
 
     prog = Program(src)
 
+    if args.input_text:
+        data_bytes = to_bytes_from_text(args.input_text)
+    else:
+        data_bytes = list(sys.stdin.buffer.read())
+
     if args.trace:
         tape: List[int] = [0]
         ptr = 0
         ip = 0
         n = len(prog.code)
         out_chars: List[str] = []
-        inp = iter(to_bytes_from_text(args.input_text))
+        inp = iter(data_bytes)
         step = 0
         while ip < n:
             tok = prog.code[ip]
@@ -152,7 +157,7 @@ def main(argv: List[str] | None = None) -> int:
             step += 1
         sys.stdout.write("".join(out_chars))
     else:
-        sys.stdout.write(prog.run(to_bytes_from_text(args.input_text)))
+        sys.stdout.write(prog.run(data_bytes))
     return 0
 
 
