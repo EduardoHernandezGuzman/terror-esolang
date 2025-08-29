@@ -58,11 +58,13 @@ Ejecuta un programa en TERROR:
 python3 terror.py examples/hola.bolsi
 ```
 
-Pásale entrada desde la terminal:
+Pásale entrada desde la terminal (dos formas posibles):
 
 ```bash
+# Usando stdin (pipe)
 echo "hola" | python3 terror.py examples/eco.bolsi
-# o
+
+# Usando argumento
 python3 terror.py examples/eco.bolsi --input "hola"
 ```
 
@@ -100,7 +102,8 @@ terror-esolang/
 │  ├─ hola.bolsi
 │  └─ eco.bolsi
 └─ tests/
-   └─ test_hola.py
+   ├─ test_hola.py
+   └─ test_eco.py
 ```
 
 ---
@@ -125,7 +128,9 @@ pip install pytest
 pytest
 ```
 
-Esto ejecutará los tests de la carpeta `tests/` y validará que el intérprete funciona (por ejemplo, que `hola.bolsi` imprime `Hello World!`).
+Esto ejecutará los tests de la carpeta `tests/` y validará que:  
+- `hola.bolsi` imprime `Hello World!`.  
+- `eco.bolsi` repite correctamente la entrada.  
 
 ---
 
