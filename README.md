@@ -23,6 +23,17 @@ Esto imprimiría la letra **B** (porque incrementa la celda dos veces y la impri
 
 ---
 
+## ¿Qué son los bolsilibros?
+Los **bolsilibros** fueron novelas populares de pequeño formato (bolsillo), muy extendidas en España entre los años 50 y 80.  
+Se vendían en quioscos, solían tener entre 96 y 128 páginas y cubrían géneros como **terror**, **ciencia ficción**, **policíaco** o **romántico**.  
+
+Eran baratos, rápidos de leer y escritos por autores prolíficos bajo nombres llamativos como **Silver Kane**, **Clark Carrados** o **Ralph Barby**.  
+Muchos de estos escritores llegaron a publicar **cientos de títulos** a lo largo de su carrera.  
+
+TERROR rinde homenaje a ese mundo, usando sus nombres y temáticas como comandos de un lenguaje de programación.
+
+---
+
 ## Instalación
 Necesitas **Python 3.8+** instalado en tu sistema.
 
@@ -103,6 +114,18 @@ Ideas iniciales:
 - Mejorar mensajes de error.  
 - Añadir nuevas instrucciones (RITUALES, ESCENAS, PERSONAJES).  
 - Crear un traductor TERROR → Brainfuck.  
+
+---
+
+## Ejecutar tests
+Si quieres comprobar que todo funciona correctamente:
+
+```bash
+pip install pytest
+pytest
+```
+
+Esto ejecutará los tests de la carpeta `tests/` y validará que el intérprete funciona (por ejemplo, que `hola.bolsi` imprime `Hello World!`).
 
 ---
 
