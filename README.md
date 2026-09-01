@@ -16,7 +16,7 @@ No busca utilidad práctica, sino rendir homenaje a los **bolsilibros españoles
 Ejemplo:
 
 ```text
-En la cripta olvidada, SILVER KANE SILVER KANE FRANK CAUDWELL
+En la cripta olvidada, SILVER KANE SILVER KANE FRANK CAUDETT
 ```
 
 Esto imprimiría la letra **B** (porque incrementa la celda dos veces y la imprime).
@@ -83,10 +83,15 @@ Estos son los 8 comandos básicos del lenguaje:
 | `RALPH BARBY`    | Decrementa celda                | `-` |
 | `CRIPTA`         | Mueve puntero a la derecha      | `>` |
 | `TUMBA`          | Mueve puntero a la izquierda    | `<` |
-| `FRANK CAUDWELL` | Imprime celda como carácter     | `.` |
+| `FRANK CAUDETT`  | Imprime celda como carácter     | `.` |
 | `SUSURRO`        | Lee un byte de entrada          | `,` |
 | `CLARK CARRADOS` | Inicio de bucle (`while != 0`)  | `[` |
 | `AMANECER`       | Fin de bucle                    | `]` |
+
+---
+
+## Migración de `FRANK CAUDWELL`
+El token de salida canónico es `FRANK CAUDETT`, en homenaje al seudónimo documentado de Francisco Caudet Yarza. `FRANK CAUDWELL` se acepta temporalmente por compatibilidad, pero está obsoleto: sustituye esa grafía por `FRANK CAUDETT` en tus programas. El intérprete muestra un aviso de migración cuando encuentra el alias antiguo.
 
 ---
 

@@ -3,8 +3,11 @@
 """
 TERROR — Intérprete minimalista inspirado en bolsilibros (v0.1)
 
-Tokens: SILVER KANE, RALPH BARBY, CRIPTA, TUMBA, FRANK CAUDWELL,
+Tokens: SILVER KANE, RALPH BARBY, CRIPTA, TUMBA, FRANK CAUDETT,
         SUSURRO, CLARK CARRADOS, AMANECER.
+
+FRANK CAUDWELL se acepta temporalmente como alias obsoleto de
+FRANK CAUDETT para facilitar la migración de programas existentes.
 
 Todo texto que no sea un token válido se ignora (prosa pulp).
 """
@@ -19,18 +22,24 @@ TOKENS = [
     "RALPH BARBY",    # -
     "CRIPTA",         # >
     "TUMBA",          # <
-    "FRANK CAUDWELL", # .
+    "FRANK CAUDETT",  # .
     "SUSURRO",        # ,
     "CLARK CARRADOS", # [
     "AMANECER",       # ]
 ]
 
-TOKEN_RE = re.compile(r"\b(" + "|".join(map(re.escape, TOKENS)) + r")\b")
+DEPRECATED_TOKENS = ["FRANK CAUDWELL"]
+OUTPUT_TOKENS = {"FRANK CAUDETT", "FRANK CAUDWELL"}
+
+TOKEN_RE = re.compile(
+    r"\b(" + "|".join(map(re.escape, TOKENS + DEPRECATED_TOKENS)) + r")\b"
+)
 
 
 class Program:
     def __init__(self, source: str):
         self.code: List[str] = TOKEN_RE.findall(source)
+        self.deprecated_tokens_used = set(self.code) & set(DEPRECATED_TOKENS)
         self.brackets: Dict[int, int] = self._build_brackets(self.code)
 
     @staticmethod
@@ -73,7 +82,7 @@ class Program:
                     tape.insert(0, 0)
                 else:
                     ptr -= 1
-            elif tok == "FRANK CAUDWELL":
+            elif tok in OUTPUT_TOKENS:
                 out_chars.append(chr(tape[ptr]))
             elif tok == "SUSURRO":
                 try:
@@ -106,6 +115,13 @@ def main(argv: List[str] | None = None) -> int:
 
     prog = Program(src)
 
+    if prog.deprecated_tokens_used:
+        print(
+            "Aviso de migración: FRANK CAUDWELL está obsoleto; "
+            "usa FRANK CAUDETT. El alias se retirará en una futura versión mayor.",
+            file=sys.stderr,
+        )
+
     if args.input_text:
         data_bytes = to_bytes_from_text(args.input_text)
     else:
@@ -135,7 +151,7 @@ def main(argv: List[str] | None = None) -> int:
                     tape.insert(0, 0)
                 else:
                     ptr -= 1
-            elif tok == "FRANK CAUDWELL":
+            elif tok in OUTPUT_TOKENS:
                 out_chars.append(chr(tape[ptr]))
             elif tok == "SUSURRO":
                 try:

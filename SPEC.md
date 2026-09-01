@@ -16,7 +16,7 @@ Ejemplo:
   (suma 3 a la celda actual y la imprime como carácter)
 - En TERROR escribirías:
   ```
-  SILVER KANE SILVER KANE SILVER KANE FRANK CAUDWELL
+  SILVER KANE SILVER KANE SILVER KANE FRANK CAUDETT
   ```
   (hace lo mismo, pero con estética bolsilibresca).
 
@@ -39,10 +39,15 @@ Y si no lo conoces, no pasa nada: aquí tienes la explicación completa.
 | `RALPH BARBY`    | Autor  | Decrementa la celda actual (`cell = (cell-1)%256`) |
 | `CRIPTA`         | Tema   | Mueve el puntero a la derecha                      |
 | `TUMBA`          | Tema   | Mueve el puntero a la izquierda                    |
-| `FRANK CAUDWELL` | Autor  | Imprime la celda actual como carácter              |
+| `FRANK CAUDETT`  | Autor  | Imprime la celda actual como carácter              |
 | `SUSURRO`        | Tema   | Lee un byte de entrada                             |
 | `CLARK CARRADOS` | Autor  | Inicio de bucle (`while cell != 0`)                |
 | `AMANECER`       | Tema   | Fin de bucle                                       |
+
+---
+
+## Compatibilidad de migración
+`FRANK CAUDETT` es la única grafía canónica de la instrucción de salida. Por compatibilidad con programas anteriores, el intérprete acepta temporalmente `FRANK CAUDWELL` como alias obsoleto de la misma instrucción (`.` en Brainfuck) y emite un aviso de migración. El alias no añade una instrucción a TERROR-8 y se retirará en una futura versión mayor.
 
 ---
 
